@@ -1,0 +1,55 @@
+{
+  "schema": "stegsim_config.v1",
+  "scenario": "stale_authority_drift",
+  "run_id": "demo-stale-authority-001",
+  "seed": 1729,
+  "agents": 10000,
+  "steps": 250,
+  "output_dir": "runs",
+  "report_every": 10,
+  "initial_conditions": {
+    "trust_mean": 0.72,
+    "trust_std": 0.10,
+    "authority_mean": 0.65,
+    "authority_std": 0.10,
+    "resource_balance_mean": 0.68,
+    "resource_balance_std": 0.12,
+    "alignment_mean": 0.74,
+    "alignment_std": 0.08,
+    "autonomy_mean": 0.50,
+    "autonomy_std": 0.10,
+    "policy_freshness": 1.0,
+    "neighbor_count_mean": 5
+  },
+  "drift": {
+    "trust_decay_per_step": 0.001,
+    "authority_staleness_per_step": 0.002,
+    "resource_concentration_per_step": 0.0015,
+    "policy_lag_growth_per_step": 0.002,
+    "mutation_pressure_growth_per_step": 0.001,
+    "fragmentation_growth_per_step": 0.0008,
+    "communication_decay_per_step": 0.0005,
+    "shock_probability": 0.02,
+    "shock_magnitude": 0.15
+  },
+  "thresholds": {
+    "healthy": 0.70,
+    "degraded": 0.45,
+    "warning": 0.25,
+    "inadmissible": 0.25,
+    "legitimacy_k": 1.0,
+    "legitimacy_alpha": 0.4,
+    "legitimacy_beta": 0.3,
+    "legitimacy_gamma": 0.3,
+    "max_acceptable_policy_lag": 10,
+    "autonomy_excess_factor": 1.05
+  },
+  "weights": {
+    "trust_continuity": 0.25,
+    "authority_coherence": 0.25,
+    "resource_balance": 0.15,
+    "policy_freshness": 0.15,
+    "mutation_pressure": 0.10,
+    "fragmentation": 0.10
+  }
+}
