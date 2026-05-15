@@ -1,0 +1,111 @@
+{
+  "_comment": "StegSim task entries for core_lite_tasks.json. Merge these into GCAT-BCAT-Engine/workflows/tools/tasks/core_lite_tasks.json. No new workflow files.",
+
+  "tasks_to_add": [
+
+    {
+      "task_id": "stegsim-demo",
+      "enabled": true,
+      "description": "Run StegSim built-in stale authority drift demo. 1000 agents, 250 steps.",
+      "command": [
+        "python", "-m", "stegsim", "demo",
+        "--output", "runs"
+      ],
+      "expected_outputs": [
+        "runs/demo-stale-authority-001/REPORT.md",
+        "runs/demo-stale-authority-001/receipts.jsonl",
+        "runs/demo-stale-authority-001/summary.json"
+      ]
+    },
+
+    {
+      "task_id": "stegsim-stale-authority",
+      "enabled": true,
+      "description": "Run StegSim stale authority drift scenario. 10,000 agents, 250 steps.",
+      "command": [
+        "python", "-m", "stegsim", "run",
+        "--config", "StegSim/examples/stale_authority_drift.json"
+      ],
+      "expected_outputs": [
+        "runs/demo-stale-authority-001/REPORT.md",
+        "runs/demo-stale-authority-001/receipts.jsonl"
+      ]
+    },
+
+    {
+      "task_id": "stegsim-silent-collapse",
+      "enabled": true,
+      "description": "Run StegSim silent collapse scenario. All dashboards green. System already lost.",
+      "command": [
+        "python", "-m", "stegsim", "run",
+        "--config", "StegSim/examples/silent_collapse.json"
+      ],
+      "expected_outputs": [
+        "runs/demo-silent-collapse-001/REPORT.md",
+        "runs/demo-silent-collapse-001/receipts.jsonl"
+      ]
+    },
+
+    {
+      "task_id": "stegsim-recovery",
+      "enabled": true,
+      "description": "Run StegSim recovery under lag scenario.",
+      "command": [
+        "python", "-m", "stegsim", "run",
+        "--config", "StegSim/examples/recovery_under_lag.json"
+      ],
+      "expected_outputs": [
+        "runs/demo-recovery-under-lag-001/REPORT.md",
+        "runs/demo-recovery-under-lag-001/receipts.jsonl"
+      ]
+    },
+
+    {
+      "task_id": "stegsim-verify",
+      "enabled": true,
+      "description": "Verify StegSim determinism: same seed produces same state hash.",
+      "command": [
+        "python", "-m", "stegsim", "verify"
+      ],
+      "expected_outputs": []
+    },
+
+    {
+      "task_id": "stegsim-test",
+      "enabled": true,
+      "description": "Run StegSim test suite (8 acceptance tests).",
+      "command": [
+        "python", "StegSim/tests/test_stegsim.py"
+      ],
+      "expected_outputs": []
+    },
+
+    {
+      "task_id": "stegsim-sweep",
+      "enabled": false,
+      "description": "v2: Phase diagram parameter sweep across trust_decay Ã authority_staleness. Produces phase_diagram.jsonl.",
+      "command": [
+        "python", "-m", "stegsim", "sweep",
+        "--output", "runs/sweep"
+      ],
+      "expected_outputs": [
+        "runs/sweep/phase_diagram.jsonl"
+      ]
+    },
+
+    {
+      "task_id": "stegsim-site-export",
+      "enabled": true,
+      "description": "Export StegSim summary data to site_data/ for transition pages.",
+      "command": [
+        "python", "tools/stegsim_site_export.py",
+        "runs",
+        "site_data"
+      ],
+      "expected_outputs": [
+        "site_data/stegsim_summary.json"
+      ]
+    }
+
+  ]
+}
