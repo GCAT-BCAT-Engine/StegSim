@@ -1,0 +1,23 @@
+[project]
+name = "stegsim"
+version = "0.1.0"
+description = "StegVerse Viability Boundary Drift Simulator"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "networkx>=3.2",
+]
+
+[project.optional-dependencies]
+viz = ["matplotlib>=3.8", "plotly>=5.18"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+stegsim = "stegsim.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[tool.setuptools.packages.find]
+where = ["src"]
