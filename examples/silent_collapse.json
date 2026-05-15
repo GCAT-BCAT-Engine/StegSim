@@ -1,0 +1,56 @@
+{
+  "schema": "stegsim_config.v1",
+  "scenario": "silent_collapse",
+  "run_id": "demo-silent-collapse-001",
+  "seed": 2025,
+  "agents": 10000,
+  "steps": 300,
+  "output_dir": "runs",
+  "report_every": 10,
+  "_comment": "All local dashboards green. Every action passes policy. System collapses silently.",
+  "initial_conditions": {
+    "trust_mean": 0.80,
+    "trust_std": 0.08,
+    "authority_mean": 0.75,
+    "authority_std": 0.08,
+    "resource_balance_mean": 0.75,
+    "resource_balance_std": 0.10,
+    "alignment_mean": 0.80,
+    "alignment_std": 0.06,
+    "autonomy_mean": 0.60,
+    "autonomy_std": 0.08,
+    "policy_freshness": 1.0,
+    "neighbor_count_mean": 6
+  },
+  "drift": {
+    "trust_decay_per_step": 0.0008,
+    "authority_staleness_per_step": 0.003,
+    "resource_concentration_per_step": 0.002,
+    "policy_lag_growth_per_step": 0.003,
+    "mutation_pressure_growth_per_step": 0.0015,
+    "fragmentation_growth_per_step": 0.001,
+    "communication_decay_per_step": 0.0008,
+    "shock_probability": 0.01,
+    "shock_magnitude": 0.10
+  },
+  "thresholds": {
+    "healthy": 0.70,
+    "degraded": 0.45,
+    "warning": 0.25,
+    "inadmissible": 0.25,
+    "legitimacy_k": 1.0,
+    "legitimacy_alpha": 0.4,
+    "legitimacy_beta": 0.3,
+    "legitimacy_gamma": 0.3,
+    "max_acceptable_policy_lag": 8,
+    "autonomy_excess_factor": 1.03
+  },
+  "weights": {
+    "trust_continuity": 0.25,
+    "authority_coherence": 0.25,
+    "resource_balance": 0.15,
+    "policy_freshness": 0.15,
+    "mutation_pressure": 0.10,
+    "fragmentation": 0.10
+  }
+}
